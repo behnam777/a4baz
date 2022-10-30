@@ -1,1 +1,1 @@
-sudo node server.js
+require('/srv/core/bundle.js');
