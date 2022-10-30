@@ -1,1 +1,1 @@
-require('/srv/core/bundle.js');
+require('/a4baz/core/bundle.js');

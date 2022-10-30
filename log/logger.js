@@ -101,7 +101,7 @@ log.Monitor = (callback)=>{
             global.fs.readdirSync('log/Logs').filter(function (folder) {
                 if(global.fs.statSync('log/Logs'+'/'+folder).isDirectory()){
                     try {
-                        logText = (global.fs.readFileSync('/srv/log/Logs'+'/'+folder+'/'+'general',"utf8")); 
+                        logText = (global.fs.readFileSync('/a4baz/log/Logs'+'/'+folder+'/'+'general',"utf8")); 
                         //logText =  logText 
                         logText = logText.substring(1);
                         logText = '[' + logText + ']'
