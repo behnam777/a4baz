@@ -1,5 +1,5 @@
  
-global.dbConnection.Initializing() 
+global.database.Initializing() 
 .then((result) => {
     if(result){     return global.Logger.Initializing();        }
     else{           return false;                               }

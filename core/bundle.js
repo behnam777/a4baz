@@ -29,9 +29,10 @@ global.security                     =  require('../security/security.js');
 //******************************************************************************************* 
 global.HTTP                         =  require('../api/HTTP.js'); 
 global.Logger                       =  require('../log/logger.js');   
-global.dbConnection                 =  require('../database/connection.js'); 
-global.queries                      =  require('../database/queries.js'); 
-global.settings                     =  require('../database/systemSettings.js'); 
+//global.connection                   =  require('../database/connection.js'); 
+global.database                     =  require('../database/database.js'); 
+//global.queries                      =  require('../database/queries.js'); 
+//global.settings                     =  require('../database/systemSettings.js'); 
 //*******************************************************************************************
 global.user                         =  require('../entities/user.js');
 //*******************************************************************************************      

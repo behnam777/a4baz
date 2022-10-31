@@ -80,15 +80,14 @@ HTTP.Initializing = ()=>{
                     }
                 }).catch((error)=>{res.send({state:false, message:error}).status(500) })    
             })
-            HTTP.app.post('/signup',(req, res) => {  
-                console.log(req.body);  
+            HTTP.app.post('/signup',(req, res) => {   
                 global.user.signup(req.body)
                 .then((result)=>{
                     if(result){  
                         res.set('Access-Control-Expose-Headers', 'authorization'); 
                         res.send(result.res).status(200); 
                     }
-                }).catch((error)=>{res.send({state:false, message:error}).status(500) })    
+                }).catch((error)=>{console.log(error);;res.send({state:false, message:error}).status(500) })    
             })
             //******************************************************************************************************
             HTTP.app.use(router); 

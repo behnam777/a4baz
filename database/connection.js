@@ -2,7 +2,7 @@ var connection = {}
     connection.database = '';
     connection.url = '';
     connection.settings = '';
-    connection.CollectionNames = []
+    connection.CollectionNames = [];
 //***********************************************
 connection.Initializing = ()=>{
     return new Promise((resolve,reject)=>{ 
