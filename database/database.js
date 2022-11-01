@@ -1,8 +1,10 @@
 var     GDB                      =       new Object(); 
 //******************************************************************************************************************************************
 var     System                                  =       {};
-        System['roles']                         =       new Object();
         System['users']                         =       new Object();
+        System['logger']                        =       { txt1: "   ",  txt2: "   ",  txt3: "   ",  txt4: "   ",  txt5: "   ",  txt6: "   ",  field1: "type", field2: "filename",  field3: "date", field4: "message",  field5: "millisecond",phoneNumber: "",backupTimeLogs:3,dailyLogsList:[],cloudStorage:false}; 
+        System['http']                          =       { port:80}
+        System['roles']                         =       { "A3":'admin',"A2":"technicalSupport","A5":"serviceman","A5":"happyCall","A4":"marketing","A1":"finance","A6":"tsHappyCall"}
 //******************************************************************************************************** UPDATE whit cheching true STRUCTURE and then save.
 GDB.save = (directory,callback)=>{  
         try {
@@ -144,8 +146,9 @@ GDB.Initializing = ()=>{
                                                 try {
                                                         GDB.System = JSON.parse(data); 
                                                         if(GDB.System){
-                                                                global.DataBase = GDB.System; 
+                                                                global.DataBase = GDB.System;  
                                                                 GDB.databaseAutoBackupMaker();
+                                                                GDB.save();
                                                                 resolve(true);
                                                         }
                                                 }
@@ -159,6 +162,7 @@ GDB.Initializing = ()=>{
                                                                                 if(GDB.System){  //now we make sure db is correct
                                                                                         global.DataBase = GDB.System; 
                                                                                         GDB.databaseAutoBackupMaker();
+                                                                                        GDB.save();
                                                                                         resolve(true);
                                                                                 }
                                                                                 else{
@@ -213,8 +217,8 @@ GDB.Initializing = ()=>{
                                                                 }
                                                                 else{
                                                                         console.log('DB NOT FOUND - use backup - False - make new ');
-                                                                        GDB.save();
                                                                         global.DataBase = GDB.System; 
+                                                                        GDB.save();
                                                                         GDB.databaseAutoBackupMaker();
                                                                         resolve(true);
                                                                 }
@@ -223,8 +227,8 @@ GDB.Initializing = ()=>{
                                                 }
                                                 else{
                                                         console.log('DB NOT FOUND - create new');
-                                                        GDB.save();
                                                         global.DataBase = GDB.System; 
+                                                        GDB.save();
                                                         GDB.databaseAutoBackupMaker();
                                                         resolve(true);
                                                 }

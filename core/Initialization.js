@@ -1,5 +1,4 @@
- 
-global.database.Initializing() 
+global.fileSystem.Initializing() 
 .then((result) => {
     if(result){     return global.Logger.Initializing();        }
     else{           return false;                               }

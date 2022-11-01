@@ -4,44 +4,19 @@ HTTP.Initializing = ()=>{
     return new Promise((resolve,reject)=>{
         try {
             global.Logger.console('log','... Express is Initializing'); 
-            HTTP.app  = global.express(); 
-            HTTP.port = global.settings.http.port;
-            HTTP.app.use(global.bodyParser.json({limit: '50mb'}));
-            HTTP.app.use(global.bodyParser.urlencoded({limit: '50mb', extended: true}));
-            HTTP.root = '.';//Or can be __dirname  
+            //******************************************************************************************************
+            HTTP.app  = global.express();  
+            HTTP.port = global.DataBase.http.port;
+            HTTP.root = '.';
             global.HTTP.Server = global.http.createServer(HTTP.app)
             global.HTTP.Server.listen(HTTP.port);
+            //******************************************************************************************************
             HTTP.app.use(global.cors());
             HTTP.app.use(global.bodyParser.json()); 
-            HTTP.app.use(function(req, res, next) {
-                res.header("Access-Control-Allow-Origin", "*");
-                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-                next();
-            });
+            HTTP.app.use(global.bodyParser.json({limit: '50mb'}));
+            HTTP.app.use(global.bodyParser.urlencoded({limit: '50mb', extended: true})); 
+            //******************************************************************************************************
             const router    = HTTP.routerMaker();
-            //********************************************* 1 - statick files (no need authorization)***************************************************
-            //HTTP.app.get('/favicon.ico',(req, res) => {   res.sendFile('./View.D/src/icons/favicon.ico' ,   { root : '.'}); })  
-            //HTTP.app.get('/',           (req, res) => {   res.send(global.Site);    })  
-            //**********************************************************************************************
-            HTTP.app.post('/forgottenPassword',(req, res)=>{
-                if(req.body.phonenumber){
-                    let userInDB = '';
-                    let userIsfound = false;
-                    for (let index = 0; index < Object.keys(global.DataBase.users).length; index++) { 
-                        userInDB = global.DataBase.users[Object.keys(global.DataBase.users)[index]];
-                        if(userInDB && !userInDB.deleted  && userInDB.enability && (userInDB.phonenumber == req.body.phonenumber)){
-                            let password = (global.security.deHashCode(userInDB.password)).toString();
-                            userIsfound = true;
-                            res.send({state:true, message:password}).status(200);
-                            break;
-                        } 
-                    }
-                    if(!userIsfound){
-                        res.send({state:false, message:'user not found or user is disable'}).status(200)
-                    }
-                }
-                else{res.send({state:false, message:'phonenumber is incorrect'}).status(200)}
-            })
             //********************************************* 2 - routes (APIs that need to authorization) ***********************************************
             HTTP.app.use('/api/',(req,res,next)=>{  
                 if(req.headers.authorization && req.headers.authorization != undefined && req.headers.authorization != 'undefined' && req.headers.authorization != 'null'){ 
@@ -85,15 +60,25 @@ HTTP.Initializing = ()=>{
                 .then((result)=>{
                     if(result){  
                         res.set('Access-Control-Expose-Headers', 'authorization'); 
-                        res.send(result.res).status(200); 
+                        res.send(result).status(200); 
                     }
                 }).catch((error)=>{console.log(error);;res.send({state:false, message:error}).status(500) })    
             })
-            //******************************************************************************************************
-            HTTP.app.use(router); 
+            HTTP.app.post('/activationcode',(req, res) => {   
+                global.user.sendSMSagain(req.body)
+                .then((result)=>{
+                    if(result){  
+                        res.set('Access-Control-Expose-Headers', 'authorization'); 
+                        res.send(result).status(200); 
+                    }
+                }).catch((error)=>{console.log(error);res.send({state:false, message:error}).status(500) })    
+            })
             HTTP.app.use(function (req, res, next) {
                 res.status(404).send({state:false, message:"Sorry can't find page!"})
             }) 
+            //******************************************************************************************************
+            HTTP.app.use(router); 
+            //******************************************************************************************************
             resolve(true);
             //******************************************************************************************************
         } catch (error) {       reject(error);  }

@@ -1,4 +1,47 @@
 {
   "roles": {},
-  "users": {}
+  "users": {
+    "912": {
+      "9122899840": {
+        "phonenumber": "9122899840",
+        "phonecode": "912",
+        "activationSMSCode": "",
+        "id": "912_9122899840",
+        "lastSMSSendTime": 1667259122145,
+        "registrationTime": "2022_10_31",
+        "state": "enable"
+      },
+      "9122899841": {
+        "phonenumber": "9122899841",
+        "phonecode": "912",
+        "activationSMSCode": "1111",
+        "id": "912_9122899841",
+        "lastSMSSendTime": 1667261151602,
+        "registrationTime": "2022_11_1",
+        "state": "disable",
+        "needsLogin": true,
+        "roles": []
+      }
+    }
+  },
+  "logger": {
+    "txt1": "   ",
+    "txt2": "   ",
+    "txt3": "   ",
+    "txt4": "   ",
+    "txt5": "   ",
+    "txt6": "   ",
+    "field1": "type",
+    "field2": "filename",
+    "field3": "date",
+    "field4": "message",
+    "field5": "millisecond",
+    "phoneNumber": "",
+    "backupTimeLogs": 3,
+    "dailyLogsList": [],
+    "cloudStorage": false
+  },
+  "http": {
+    "port": 80
+  }
 }

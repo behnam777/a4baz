@@ -1,5 +1,5 @@
 var log                         =   {};   
-    log.Setting                 =   { txt1: "   ",  txt2: "   ",  txt3: "   ",  txt4: "   ",  txt5: "   ",  txt6: "   ",  field1: "type", field2: "filename",  field3: "date", field4: "message",  field5: "millisecond",phoneNumber: "",backupTimeLogs:3,dailyLogsList:[],cloudStorage:false}; 
+    log.Setting                 =   {}
 //*******************************************************************************************
 log.console     =    (type,message,needSaveAsLog)=>{
     try {
@@ -115,7 +115,7 @@ log.Monitor = (callback)=>{
                 else{resolve(log.LogsFolders)}
             }, 2000);
 
-        } catch (error) { global.Logger.log(' error',error,'error',false,false,null); }
+        } catch (error) {console.log(error); }
     })
         
 }
@@ -123,9 +123,9 @@ log.Monitor = (callback)=>{
 log.Initializing = ()=>{
     return new Promise((resolve,reject)=>{ 
        console.log('\x1b[32m','... Logger is Initializing','\x1b[0m');
-        try {
-            if((global.settings.logger)){
-                log.Setting = (global.settings.logger); 
+        try { 
+            if((global.DataBase.logger)){
+                log.Setting = (global.DataBase.logger); 
             } 
             if(!global.fs.existsSync('log/Logs/')){
                 global.fs.mkdirSync('log/Logs/');

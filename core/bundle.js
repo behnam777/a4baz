@@ -7,8 +7,7 @@ global.os                           =  require('os');
 global.Path                         =  require('path');
 global.fs                           =  require('fs');
 global.express                      =  require('express'); 
-global.duix                         =  require('duix'); 
-global.httpModul                    =  require('http'); 
+global.duix                         =  require('duix');  
 global.glob                         =  require('glob');  
 global.bodyParser                   =  require('body-parser');
 global.cors                         =  require('cors');  
@@ -28,11 +27,8 @@ global.email                        =  require('../utilities/email.js');
 global.security                     =  require('../security/security.js');
 //******************************************************************************************* 
 global.HTTP                         =  require('../api/HTTP.js'); 
-global.Logger                       =  require('../log/logger.js');   
-//global.connection                   =  require('../database/connection.js'); 
-global.database                     =  require('../database/database.js'); 
-//global.queries                      =  require('../database/queries.js'); 
-//global.settings                     =  require('../database/systemSettings.js'); 
+global.Logger                       =  require('../log/logger.js');     
+global.fileSystem                     =  require('../database/database.js');  
 //*******************************************************************************************
 global.user                         =  require('../entities/user.js');
 //*******************************************************************************************      
