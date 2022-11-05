@@ -7,7 +7,11 @@ global.fileSystem.Initializing()
     if(result){     return global.security.Initializing();} 
     else{ global.Logger.log('FinalCatch',{erros:'wrong input'},'warrning') }
 }) 
-.then((result) => { 
+.then((result) => {
+    if(result){     return global.Swagger.Initializing();          }
+    else{ global.Logger.log('FinalCatch',{erros:'wrong input'},'warrning') }
+}) 
+.then((result) => {  
     if(result){     return global.HTTP.Initializing();          }
     else{ global.Logger.log('FinalCatch',{erros:'wrong input'},'warrning') }
 })  

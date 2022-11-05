@@ -18,19 +18,19 @@ security.sign = (sign,data,coded,refresh)=>{
             if(sign && !data && !coded){ //verify sign and verify user
                 global.jwt.verify(sign, security.salt ,  function(err, verified) {   
                     if(err){resolve({state:false,message:'Authentication has an error verify:   '+err} )} 
-                    else if(verified){ 
-                        let userPaths = ((verified.data).split('_'));   
-                        if( userPaths && global.DataBase.users[userPaths[0]] &&  global.DataBase.users[userPaths[0]][userPaths[1]]  ){
+                    else if(verified){  
+                        //let userPaths = ((verified.data).split('_'));   
+                        if( verified   &&  global.DataBase.users[verified.data]  ){
                             if(refresh == null){
-                                resolve({state:true,data:verified.data,role:global.DataBase.users[userPaths[0]][userPaths[1]].roles[0]}); 
+                                resolve({state:true,data:verified.data,role:global.DataBase.users[verified.data].roles[0]}); 
                             }
                             if(refresh != null){  
-                                global.jwt.sign({data: verified.data}, security.salt ,{ expiresIn: '6d' },(err,sign)=>{  
+                                global.jwt.sign({data: verified.data}, security.salt ,{ expiresIn: '2d' },(err,sign)=>{  
                                     if(err){    
                                         resolve({state:false,message:'Authentication has an error sign '})  
                                     }
                                     else{     
-                                        resolve({state:true ,data:verified.data,newSign:sign,role:global.DataBase.users[userPaths[0]][userPaths[1]].roles[0]}); 
+                                        resolve({state:true ,data:verified.data,newSign:sign,role:global.DataBase.users[verified.data].roles[0]}); 
                                     }
                                 });  
                             }
@@ -76,11 +76,16 @@ security.deHashCode = (s) => {
     } catch (error) {global.Logger.log('error',error,'error',false,false,null);} 
 }
 //******************************************************************************************
-security.idMaker = () => { 
+security.idMaker = (complex) => { 
         try {
                 var S4 = function() {return (((1+Math.random())*0x10000)|0).toString(16).substring(1);};
-                //let final = 'r'+S4()+S4()+S4()
-                let final = String(Math.floor(Math.random() * 9000 + 1000)); // make 4 digit random number;
+                let final
+                if(complex){
+                    final = 'a'+S4()+S4()+S4()
+                }
+                else{
+                    final = String(Math.floor(Math.random() * 9000 + 1000)); // make 4 digit random number;
+                }
                 return final; 
         } catch (error) {global.Logger.log('error',error,'error',false,false,null);} 
 }; 

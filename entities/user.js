@@ -3,25 +3,25 @@ var User = {}
 User.signup = (data)=>{ // user sent his phonenumber and get activation code
     return new Promise((resolve,reject)=>{
         try { 
-            if(data && data.phonenumber && data.phonenumber.length == 10 ){
-                let phonecode = (data.phonenumber).substring(0,3);
-                global.DataBase.users[phonecode] ? '' : global.DataBase.users[phonecode] = {} // create phone code category.
-                if(global.DataBase.users[phonecode][data.phonenumber]){
+            if(data && data.phonenumber && data.phonenumber.length == 10 ){ 
+                //global.DataBase.users[phonecode] ? '' : global.DataBase.users[phonecode] = {} // create phone code category.
+                
+                if(global.DataBase.users[data.phonenumber]){
                     global.user.sendSMSagain(data).then((result)=>{resolve(result); }) 
                 } 
                 else{
-                    let user = { 
+                    let user = {
                         phonenumber : data.phonenumber , 
-                        phonecode : phonecode ,
-                        activationSMSCode : '1111' , // TODO : global.security.idmaker()
-                        id : phonecode+"_"+String(data.phonenumber),
+                        phonecode :  (data.phonenumber).substring(0,3) ,
+                        activationSMSCode : '1111' , // TODO : global.security.idMaker()
+                        id : "A_"+String( global.security.idMaker()),
                         lastSMSSendTime:Date.now(),
                         registrationTime : global.timeAndDate.timeAsName(),
                         state : 'disable',
                         needsLogin : true,
                         roles : ["A3"]
                     }
-                    global.DataBase['users'][phonecode][user.phonenumber] = user;
+                    global.DataBase['users'][user.phonenumber] = user;
                     global.fileSystem.save();
                     resolve({message:'registration successful',state:true});
                 }
@@ -39,11 +39,11 @@ User.sendSMSagain = (data)=>{
     return new Promise((resolve,reject)=>{
         try {
             if(data && data.phonenumber && (data.phonenumber).length == 10 ){
-                let phonecode = (data.phonenumber).substring(0,3);
-                if( phonecode && global.DataBase.users[phonecode][data.phonenumber]){
-                    if( Date.now() - (global.DataBase.users[phonecode][data.phonenumber]['lastSMSSendTime']) > 120000){
-                        global.DataBase.users[phonecode][data.phonenumber]['activationSMSCode'] = '1111' /*global.security.idMaker();*/
-                        global.DataBase.users[phonecode][data.phonenumber]['lastSMSSendTime'] =  Date.now();
+                //let phonecode = (data.phonenumber).substring(0,3);
+                if(global.DataBase.users[data.phonenumber]){
+                    if( Date.now() - (global.DataBase.users[data.phonenumber]['lastSMSSendTime']) > 120000){
+                        global.DataBase.users[data.phonenumber]['activationSMSCode'] = '1111' /*global.security.idMaker();*/
+                        global.DataBase.users[data.phonenumber]['lastSMSSendTime'] =  Date.now();
                         //TODO:send sms
                         global.fileSystem.save();
                         resolve({message:'The activation code has been sent again',state:true})
@@ -74,8 +74,8 @@ User.login = (data,Token)=>{ // user insert his activation code or login by toke
                 .catch((error) => { reject('login ,on make new token  :' + error);  }) 
             } 
             else if (data && data.phonenumber && (data.phonenumber).length == 10 ) { 
-                let phonecode = (data.phonenumber).substring(0,3); 
-                let user = global.DataBase.users[phonecode][data.phonenumber]
+                //let phonecode = (data.phonenumber).substring(0,3); 
+                let user = global.DataBase.users[data.phonenumber] 
                 if(!user){
                     resolve ({res:{state:false, message:' User not found ' }});return false;
                 }
@@ -83,11 +83,11 @@ User.login = (data,Token)=>{ // user insert his activation code or login by toke
                     resolve ({res:{state:false, message:' user is deleted' }});return false;
                 } 
                 if(user && user['activationSMSCode'] === data.code){
-                    global.sign(null,user['id'],null)
+                    global.sign(null,user['phonenumber'],null)
                     .then((result)=>{   
                         if(result.state){  
-                            global.DataBase.users[phonecode][data.phonenumber]['activationSMSCode'] = ''
-                            global.DataBase.users[phonecode][data.phonenumber]['state'] = 'enable' 
+                            //global.DataBase.users[data.phonenumber]['activationSMSCode'] = ''
+                            global.DataBase.users[data.phonenumber]['state'] = 'enable' 
                             resolve({ res:{state:true,   message: user} ,token:result.sign});
                         }
                         else{  resolve({ res:{state:false,  message:'making signature for login failed'}  }); }
@@ -100,4 +100,5 @@ User.login = (data,Token)=>{ // user insert his activation code or login by toke
     })
 }
 //***********************************************
+ 
 module.exports = User;

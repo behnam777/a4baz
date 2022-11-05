@@ -1,27 +1,14 @@
 {
-  "roles": {},
   "users": {
-    "912": {
-      "9122899840": {
-        "phonenumber": "9122899840",
-        "phonecode": "912",
-        "activationSMSCode": "",
-        "id": "912_9122899840",
-        "lastSMSSendTime": 1667259122145,
-        "registrationTime": "2022_10_31",
-        "state": "enable"
-      },
-      "9122899841": {
-        "phonenumber": "9122899841",
-        "phonecode": "912",
-        "activationSMSCode": "1111",
-        "id": "912_9122899841",
-        "lastSMSSendTime": 1667261151602,
-        "registrationTime": "2022_11_1",
-        "state": "disable",
-        "needsLogin": true,
-        "roles": []
-      }
+    "9122899840": {
+      "id": "A_9122899840",
+      "name": "admin",
+      "state": "enable",
+      "activationSMSCode": "1111",
+      "phonenumber": "9122899840",
+      "roles": [
+        "A3"
+      ]
     }
   },
   "logger": {
@@ -42,6 +29,515 @@
     "cloudStorage": false
   },
   "http": {
-    "port": 80
-  }
+    "port": 80,
+    "address": "http://193.151.135.169"
+  },
+  "swagger": {
+    "version": "1.0",
+    "swaggerApi": "/apis-d",
+    "title": "A4Baz APIs documentation"
+  },
+  "roles": {
+    "A7": "user",
+    "A3": "admin",
+    "A2": "technicalSupport",
+    "A5": "happyCall",
+    "A4": "marketing",
+    "A1": "finance",
+    "A6": "tsHappyCall"
+  },
+  "categories": [
+    {
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "active": true
+    },
+    {
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "active": true
+    },
+    {
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "active": true
+    },
+    {
+      "categoryID": "04",
+      "categoryName": "صوت و تصویر",
+      "active": true
+    },
+    {
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "active": true
+    },
+    {
+      "categoryID": "06",
+      "categoryName": "کپی و دستگاه های تکثیر",
+      "active": true
+    },
+    {
+      "categoryID": "07",
+      "categoryName": "خدمات مخابراتی و زیر ساخت",
+      "active": true
+    },
+    {
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "active": true
+    }
+  ],
+  "services": [
+    {
+      "id": "01A",
+      "title": "نصب و راه اندازی",
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "01B",
+      "title": "تعمیر و رفع ایراد",
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "01C",
+      "title": "سرویس کامل",
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "01D",
+      "title": "جنرال سرویس",
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "01E",
+      "title": "دستگاه فکس",
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "01F",
+      "title": "بررسی صحت سلامت دستگاه",
+      "categoryID": "01",
+      "categoryName": "پرینتر ,پلاتر ,اسکنر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02A",
+      "title": "نصب ویندوز و نرم افزار",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02B",
+      "title": "نصب آنتی ویروس و ویروس یابی",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02C",
+      "title": "نصب و راه اندازی کامل دستگاه",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02D",
+      "title": "عدم اتصال به اینترنت",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02E",
+      "title": "نصب و راه اندازی مودم اینترنت",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02F",
+      "title": "آموزش کاربری دستگاه",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02G",
+      "title": "مشکلات سخت افزاری",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "02H",
+      "title": "سرویس کامل دستگاه",
+      "categoryID": "02",
+      "categoryName": "کامپیوتر،لپ تاپ،نرم افزار",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03A",
+      "title": "نصب و راه اندازی سرور",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03B",
+      "title": "جنرال سرویس",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03C",
+      "title": "نصب سیستم عامل",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03D",
+      "title": "RAID بندی",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03E",
+      "title": "ارتقا سخت افزار سرور و استوریچ",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03F",
+      "title": "عیب یابی و تعمیر",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03G",
+      "title": "شبکه داخلی و وایرلس",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03H",
+      "title": "نصب و راه اندازی سوئیچ",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03I",
+      "title": "عیب یابی سرویس و تعمیر سرور",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03J",
+      "title": "نصب و عیب یابی استوریچ",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03K",
+      "title": "نصب اکتیو دایرکتوری",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "03L",
+      "title": "سایر",
+      "categoryID": "03",
+      "categoryName": "سرور و شبکه",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "04A",
+      "title": "تلوزیون",
+      "categoryID": "04",
+      "categoryName": "صوت و تصویر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05A",
+      "title": "موبایل و تلفن همراه",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05B",
+      "title": "هارد اکسترنال",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05C",
+      "title": "فلش مموری",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05D",
+      "title": "دوربین دیجیتال",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05E",
+      "title": "SD,MicroSD,CF",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05F",
+      "title": "پاک شدن،ضربه خوردگی،آب خوردگی",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05G",
+      "title": "فرمت شدن، عدم شناسایی",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "05H",
+      "title": "Server,SAN,NAS",
+      "categoryID": "05",
+      "categoryName": "بازیابی اطلاعات و تعمیر هارددیسک",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "06A",
+      "title": "نصب و راه اندازی",
+      "categoryID": "06",
+      "categoryName": "کپی و دستگاه های تکثیر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "06B",
+      "title": "تعمیر و رفع ایراد",
+      "categoryID": "06",
+      "categoryName": "کپی و دستگاه های تکثیر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "06C",
+      "title": "سرویس کامل",
+      "categoryID": "06",
+      "categoryName": "کپی و دستگاه های تکثیر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "06D",
+      "title": "جنرال سرویس",
+      "categoryID": "06",
+      "categoryName": "کپی و دستگاه های تکثیر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "06E",
+      "title": "خدمات شارژ و تعمیر انواع کاتریج",
+      "categoryID": "06",
+      "categoryName": "کپی و دستگاه های تکثیر",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "07A",
+      "title": "بازدید و رفع ایرادات خطوط و nod شبکه",
+      "categoryID": "07",
+      "categoryName": "خدمات مخابراتی و زیر ساخت",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "07B",
+      "title": "برنامه ریزی مرکز تلفن ",
+      "categoryID": "07",
+      "categoryName": "خدمات مخابراتی و زیر ساخت",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "07C",
+      "title": "نصب داکت یا تراکینگ ",
+      "categoryID": "07",
+      "categoryName": "خدمات مخابراتی و زیر ساخت",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "07D",
+      "title": "کابل گذاری",
+      "categoryID": "07",
+      "categoryName": "خدمات مخابراتی و زیر ساخت",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "08A",
+      "title": "نصب روشنایی",
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "08B",
+      "title": "نصب داکت و یا تراکینگ",
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "08C",
+      "title": "رفع اتصالی",
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "08D",
+      "title": "نصب فیوز و تابلو",
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "08E",
+      "title": "سیم کشی رو و یا توکار",
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "experts": [],
+      "price": 0,
+      "active": true
+    },
+    {
+      "id": "08F",
+      "title": "نصب و رفع ایراد آیفون های تصویری و عادی",
+      "categoryID": "08",
+      "categoryName": "خدمات برق ساختمانی",
+      "experts": [],
+      "price": 0,
+      "active": true
+    }
+  ]
 }

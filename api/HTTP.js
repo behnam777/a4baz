@@ -12,9 +12,12 @@ HTTP.Initializing = ()=>{
             global.HTTP.Server.listen(HTTP.port);
             //******************************************************************************************************
             HTTP.app.use(global.cors());
+            HTTP.app.use(express.json())
             HTTP.app.use(global.bodyParser.json()); 
             HTTP.app.use(global.bodyParser.json({limit: '50mb'}));
             HTTP.app.use(global.bodyParser.urlencoded({limit: '50mb', extended: true})); 
+            //****************************************************************************************************** 
+            HTTP.app.use(global.DataBase.swagger['swaggerApi'],global.Swagger.serve,global.Swagger.ui)
             //******************************************************************************************************
             const router    = HTTP.routerMaker();
             //********************************************* 2 - routes (APIs that need to authorization) ***********************************************

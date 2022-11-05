@@ -18,6 +18,9 @@ global.querystring                  =  require('querystring');
 global.child_process                =  require('child_process');
 global.rateLimit                    =  require('express-rate-limit'); 
 global.MongoClient                  =  require('mongodb').MongoClient; 
+global.swaggerJSDoc                 =  require('swagger-jsdoc');
+global.swaggerUi                    =  require('swagger-ui-express')
+global.mongoose                     =  require('mongoose');
 //*******************************************************************************************
 global.deleteFolder                 =  require('../utilities/deleteFolder.js');
 global.timeAndDate                  =  require('../utilities/time.js');
@@ -28,10 +31,15 @@ global.security                     =  require('../security/security.js');
 //******************************************************************************************* 
 global.HTTP                         =  require('../api/HTTP.js'); 
 global.Logger                       =  require('../log/logger.js');     
-global.fileSystem                     =  require('../database/database.js');  
+global.fileSystem                   =  require('../database/database.js');  
+//global.Connection                   =  require('../database/connection.js');  
+global.Swagger                      =  require('../documents/swagger.js');
 //*******************************************************************************************
 global.user                         =  require('../entities/user.js');
 //*******************************************************************************************      
 global.sign                         =  global.security.sign; 
 //*******************************************************************************************
-setTimeout(() => {require('./Initialization.js');}, 100); 
+setTimeout(() => {
+    require('dotenv').config()
+    require('./Initialization.js');
+}, 100); 
