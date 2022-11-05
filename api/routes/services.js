@@ -1,5 +1,5 @@
 const router = global.express.Router();
-//********************************************* 1 -  set place  ************************************     
+//*************************************************************************************************/
 router.post('/api/addServiceCategory',(req, res) => { 
     if(req.body.categoryName){ 
         if( res.locals.role && (res.locals.role == 'A3')){

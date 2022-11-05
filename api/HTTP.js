@@ -48,6 +48,50 @@ HTTP.Initializing = ()=>{
             //*************************************************  bundle routes  ************************************************************************
             HTTP.app.use(router);
             //*************************************************  3 - login is exception ,  (has self authorization methods and can has not Token) ******
+             /** 
+             * @swagger
+             * /login:
+             *  post:   
+             *      summary : users login
+             *      description: users will login by (phonenumber and code) or (jwt token)
+             *      tags:
+             *        - authorization
+             *      requestBody:
+             *          requierd : true
+             *          content:
+             *              application/json:
+             *                  schema:
+             *                      type: object
+             *                      properties:
+             *                          phonenumber:
+             *                             type: string
+             *                          code:
+             *                              type: string
+             *                      example:   # Sample object
+             *                              phonenumber: 9122899840
+             *                              code: 3461
+             *      parameters:
+             *         - in: header
+             *           name: authorization
+             *           schema:
+             *               type: string 
+             *           required: false
+             *      responses:
+             *          200: 
+             *            headers:
+             *               authorization: 
+             *                  type: string
+             *               description: authorization token.
+             *            content:
+             *              application/json:
+             *                  schema:
+             *                      type: object
+             *                      properties:
+             *                          state:
+             *                             type: boolean
+             *                          message:
+             *                              type: string 
+             */
             HTTP.app.post('/login',(req, res) => {    
                 global.user.login(req.body,req.headers.authorization)
                 .then((result)=>{
@@ -58,6 +102,38 @@ HTTP.Initializing = ()=>{
                     }
                 }).catch((error)=>{res.send({state:false, message:error}).status(500) })    
             })
+            /** 
+             * @swagger
+             * /signup:
+             *  post:   
+             *      summary : user registration by phone number
+             *      description: at the first the user register by phonenumber and get activation code through sms
+             *      tags:
+             *        - authorization
+             *      requestBody:
+             *          requierd : true
+             *          content:
+             *              application/json:
+             *                  schema:
+             *                      type: object
+             *                      properties:
+             *                          phonenumber:
+             *                             type: string 
+             *                      example:   # Sample object
+             *                              phonenumber: 9122899840  
+             *      responses:
+             *          200:  
+             *            content:
+             *              application/json:
+             *                  schema:
+             *                      type: object
+             *                      properties:
+             *                          state:
+             *                             type: boolean
+             *                          message:
+             *                              type: string
+             *             
+             */
             HTTP.app.post('/signup',(req, res) => {   
                 global.user.signup(req.body)
                 .then((result)=>{
@@ -67,6 +143,38 @@ HTTP.Initializing = ()=>{
                     }
                 }).catch((error)=>{console.log(error);;res.send({state:false, message:error}).status(500) })    
             })
+            /** 
+             * @swagger
+             * /activationcode:
+             *  post:   
+             *      summary : request activation code again
+             *      description: if the user did nort get the activation code he can request again
+             *      tags:
+             *        - authorization
+             *      requestBody:
+             *          requierd : true
+             *          content:
+             *              application/json:
+             *                  schema:
+             *                      type: object
+             *                      properties:
+             *                          phonenumber:
+             *                             type: string 
+             *                      example:   # Sample object
+             *                              phonenumber: 9122899840  
+             *      responses:
+             *          200:  
+             *            content:
+             *              application/json:
+             *                  schema:
+             *                      type: object
+             *                      properties:
+             *                          state:
+             *                             type: boolean
+             *                          message:
+             *                              type: string
+             *             
+             */
             HTTP.app.post('/activationcode',(req, res) => {   
                 global.user.sendSMSagain(req.body)
                 .then((result)=>{

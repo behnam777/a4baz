@@ -17,7 +17,7 @@ Swagger.Initializing = ()=>{
                         }
                     ]
                 },
-                apis:['../api/HTTP.js']
+                apis:['/a4baz/api/HTTP.js','/a4baz/api/routes/*.js']
             }
             const swaggerSpec = global.swaggerJSDoc(swaggerOptions) 
             Swagger.serve = global.swaggerUi.serve
@@ -27,5 +27,35 @@ Swagger.Initializing = ()=>{
         catch(error){reject(error)}
     })
 }
+//***********************************************
+/** 
+ * @swagger
+ * /api/books/addbook:
+ *  put:
+ *      summary : update mongodb
+ *      description: update mongodb by put method
+ *      parameters:
+ *        - in : path
+ *          name : id
+ *          required: true
+ *          description : book id
+ *          schema :
+ *              type: integer
+ *      requestBody:
+ *          requierd : true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref : '#components/schemas/Book'
+ *      responses:
+ *          200:
+ *              description: update sucessfully
+ *              content:
+ *                  application/json:
+ *                    schema:
+ *                      type: array
+ *                      items:
+ *                          $ref : '#components/schemas/Book'
+ */
 //***********************************************
 module.exports = Swagger;
