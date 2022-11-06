@@ -15,9 +15,9 @@ HTTP.Initializing = ()=>{
             HTTP.app.use(express.json())
             HTTP.app.use(global.bodyParser.json()); 
             HTTP.app.use(global.bodyParser.json({limit: '50mb'}));
-            HTTP.app.use(global.bodyParser.urlencoded({limit: '50mb', extended: true})); 
+            HTTP.app.use(global.bodyParser.urlencoded({limit: '50mb', extended: true}));  
             //****************************************************************************************************** 
-            HTTP.app.use(global.DataBase.swagger['swaggerApi'],global.Swagger.serve,global.Swagger.ui)
+            HTTP.app.use(global.DataBase.swagger['swaggerApi'],global.Swagger.serve,global.Swagger.ui) 
             //******************************************************************************************************
             const router    = HTTP.routerMaker();
             //********************************************* 2 - routes (APIs that need to authorization) ***********************************************
@@ -184,6 +184,12 @@ HTTP.Initializing = ()=>{
                     }
                 }).catch((error)=>{console.log(error);res.send({state:false, message:error}).status(500) })    
             })
+            //******************************************************************************************************
+            //serve the docs 
+            HTTP.app.get('/docs',(req, res) => { 
+                res.sendFile('/a4baz/out/index.html')
+            }) 
+            //******************************************************************************************************
             HTTP.app.use(function (req, res, next) {
                 res.status(404).send({state:false, message:"Sorry can't find page!"})
             }) 

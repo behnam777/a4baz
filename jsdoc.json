@@ -1,0 +1,17 @@
+{
+    "source":{
+        "include" : ["/a4baz/"],
+        "includePattern" : ".js$",
+        "excludePattern" : "(node_modules/|documents)"
+    },
+    "plugins":["plugins/markdown"],
+    "templates":{
+        "cleverLink":true,
+        "monospaceLinks":true
+    },
+    "opts":{
+        "recurse":true,
+        "destination":"./documents/"
+    }
+}
+

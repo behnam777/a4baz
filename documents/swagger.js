@@ -5,6 +5,7 @@ Swagger.Initializing = ()=>{
         try {
             global.Logger.console('log','... Swagger is Initializing'); 
             const swaggerOptions = {
+                
                 definition:{
                     openapi:'3.0.0',
                     info:{
@@ -21,7 +22,10 @@ Swagger.Initializing = ()=>{
             }
             const swaggerSpec = global.swaggerJSDoc(swaggerOptions) 
             Swagger.serve = global.swaggerUi.serve
-            Swagger.ui = global.swaggerUi.setup(swaggerSpec)
+            Swagger.ui = global.swaggerUi.setup(swaggerSpec,{
+                customCss: '.swagger-ui .topbar { display: none }',
+                customSiteTitle: "a4baz API", 
+            })
             resolve(true)
         }
         catch(error){reject(error)}
