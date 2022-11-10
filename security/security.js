@@ -5,7 +5,7 @@ const {exec,spawn } = require('child_process');
 security.Initializing = ()=>{
     return new Promise((resolve,reject)=>{
         try {  
-            security.salt = global.security.idMaker();
+            //security.salt = global.security.idMaker(); 
             resolve(true)  
         }catch(error){ reject(error) }
     })
